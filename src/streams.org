@@ -362,7 +362,10 @@ the backing buffer up until the current write position.
        (skip
            [_ x] (.write out (byte-array x)) _)
        (get-position
-           [_] (throw (UnsupportedOperationException.))))
+           [_] (throw (UnsupportedOperationException.)))
+       java.io.Closeable
+       (close
+           [_] (.close out))
 
      :cljs
      (deftype OutputStreamWrapper
